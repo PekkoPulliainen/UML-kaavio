@@ -1,0 +1,13 @@
+Käyttötapauskaavio
+
+Verkkosivu toimii äänestys sovelluksena.
+
+Verkkosivulla on kahdenlaisia käyttäjiä
+- Äänestäjät
+- Ylläpitäjät
+
+Äänestäjät voivat äänestää äänestyksiin myönteisesti tai epämyönteisesti, äänestäjät voivat myös tarkastella tuloksia.
+
+Ylläpitäjät voivat luoda uusia äänestyksiä, äänestyksen luominen vaatii kaksi asiaa.
+Äänestyksen luominen vaatii äänestyksen nimen ja äänestyksen kuvauksen.
+Ylläpitäjät voivat muuttaa äänestäjiä ylläpitäjiksi.

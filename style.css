@@ -1,0 +1,56 @@
+.upperText {
+    font-size: 150%;
+    position: relative;
+    left: 0%;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.createPoll {
+    position: relative;
+    left: 50%;
+}
+
+button {
+    border-radius: 8px;
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    border-color: white;
+}
+
+.userName {
+    position: relative;
+    font-size: 85%;
+    left: 30%;
+}
+
+.logOut {
+    position: relative;
+    padding-top: 15px;
+    padding-bottom: 0%;
+    font-size: 100%;
+    width: 10%;
+    height: 50%;
+    border: none;
+    background-color: transparent;
+    color: rgb(93, 113, 167);
+    text-decoration-line: underline;
+}
+
+footer {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+body {
+    background-color: rgb(27, 26, 26);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    min-width: 100vh;
+}
