@@ -161,3 +161,15 @@ input[type="radio"]:focus {
 .form-check-input2 {
   margin-left: 30px;
 }
+
+.voteButton {
+  height: 10%;
+  width: 22%;
+  position: relative;
+  left: 78%;
+}
+
+.removePollButton {
+  position: relative;
+  padding: 0%;
+}

@@ -9,14 +9,13 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
   </head>
   <body>
     <header class="bg-dark text-white p-3">
       <div class="container-sm">
         <h1 class="upperText pt-2">Äänestys</h1>
         <button
-          onclick="createPoll()"
+          onclick="showPollForm()"
           id="createPoll"
           class="createPoll btn btn-outline-light"
         >
@@ -36,6 +35,78 @@
       </div>
     </header>
 
+    <!-- Poll Creation Form (initially Hidden)-->
+    <div id="pollForm" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-dark">
+            <h5 class="modal-title text-white">Luo Äänestys</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body bg-dark text-white">
+            <form id="pollCreationForm">
+              <div class="mb-3">
+                <label for="pollTitle" class="form-label">Otsikko</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="pollTitle"
+                  placeholder="Äänestyksen aihe"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="pollDescription" class="form-label">Kuvaus</label>
+                <textarea
+                  class="form-control"
+                  id="pollDescription"
+                  placeholder="Kuvaile otsikkoa"
+                  required
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Vaihtoehdot</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Vaihtoehto 1"
+                  id="option1"
+                />
+                <input
+                  type="text"
+                  class="form-control mt-2"
+                  placeholder="Vaihtoehto 2"
+                  id="option2"
+                />
+                <input
+                  type="text"
+                  class="form-control mt-2"
+                  placeholder="Vaihtoehto 3"
+                  id="option3"
+                />
+                <input
+                  type="text"
+                  class="form-control mt-2"
+                  placeholder="Vaihtoehto 4"
+                  id="option4"
+                />
+                <input
+                  type="text"
+                  class="form-control mt-2"
+                  placeholder="Vaihtoehto 5"
+                  id="option5"
+                />
+              </div>
+              <button type="submit" class="btn btn-light">Luo Äänestys</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Modal for Login/Register -->
     <div
       id="authModal"
@@ -160,7 +231,10 @@
     </div>
 
     <div class="container mt-5">
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div
+        class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"
+        id="pollContainer"
+      >
         <!-- Voting Forms here -->
       </div>
     </div>
@@ -170,5 +244,6 @@
     <footer>
       <p>PEKKO 2025</p>
     </footer>
+    <script src="script.js"></script>
   </body>
 </html>
