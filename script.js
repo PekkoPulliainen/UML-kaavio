@@ -122,11 +122,93 @@ function vote(index) {
   let selectedOption = document.querySelector(
     `input[name='poll${index}']:checked`
   );
-  if (selectedOption) {
-    alert("Äänesi on rekisteröity!");
-  } else {
+  if (!selectedOption) {
     alert("Valitse vaihtoehto ennen äänestämistä!");
+    return;
   }
+
+  let selectedIndex = parseInt(selectedOption.id.split("-")[1]);
+
+  let votes = JSON.parse(localStorage.getItem("votes")) || {};
+  if (!votes[index]) {
+    votes[index] = new Array(polls[index].options.length).fill(0);
+  }
+
+  votes[index][selectedIndex] += 1;
+
+  console.log("Ääniä +1 kohdassa ", votes[index]);
+
+  localStorage.setItem("votes", JSON.stringify(votes));
+
+  displayResults(index);
+}
+
+function displayResults(index) {
+  let polls = JSON.parse(localStorage.getItem("polls")) || [];
+  let votes = JSON.parse(localStorage.getItem("votes")) || {};
+
+  if (!votes[index]) {
+    return; // No votes yet
+  }
+
+  let pollCard = document.querySelectorAll(".col.border.border-dark")[index];
+  let optionsContainer = pollCard.querySelector(".card-body");
+
+  // Remove existing voting elements
+  let voteButton = pollCard.querySelector(".voteButton");
+  let formChecks = pollCard.querySelectorAll(".form-check");
+
+  if (voteButton) voteButton.remove();
+  formChecks.forEach((el) => el.remove());
+
+  // Calculate total votes
+  let totalVotes = votes[index].reduce((sum, count) => sum + count, 0) || 1;
+
+  let resultsHTML = `<h6 class="fw-bold mt-3"></h6>`;
+
+  polls[index].options.forEach((option, i) => {
+    let count = votes[index][i] || 0;
+    let percentage = ((count / totalVotes) * 100).toFixed(1);
+
+    resultsHTML += `
+      <div class="mt-2">
+  <div class="progress row d-flex flex-column"; background-color: #6c757d;"> <!-- Dark Gray Background -->
+    <label class="progress-bar bg-dark text-white text-center" role="progressbar" 
+           style="width: ${percentage}%; min-width: 15%; max-width: 100%;" 
+           aria-valuenow="${percentage}" aria-valuemin="0" aria-valuemax="100">
+      ${option}
+    </label>
+    <div class="progress-bar bg-dark text-white text-center fw-bold" role="progressbar" 
+         style="width: ${percentage}%; min-width: 15%; max-width: 100%;" 
+         aria-valuenow="${percentage}" aria-valuemin="0" aria-valuemax="100">
+      ${percentage}% (${count})
+    </div>
+    </div>
+  </div>
+
+    `;
+  });
+
+  // Create a single total votes button below the results
+  let totalVotesHTML = `
+    <div class="row m-0 p-0 mt-3 border-top border-dark d-flex justify-content-end">
+      <div class="totalVotes d-flex flex-column align-items-center border border-1 rounded border-white mt-3 h-75 p-2" style="width: 100px;">
+        <span class="fw-bold">Ääniä:</span>
+        <span>${totalVotes}</span>
+      </div>
+    </div>
+    `;
+
+  let resultsDiv = document.createElement("div");
+  resultsDiv.classList.add("vote-results", "mt-3");
+  resultsDiv.innerHTML = resultsHTML + totalVotesHTML; // Append total votes here
+
+  // Remove extra border-top if it exists
+  let borderDiv = pollCard.querySelector(".border-top");
+  if (borderDiv) borderDiv.remove();
+
+  // Append results where the vote options used to be
+  optionsContainer.appendChild(resultsDiv);
 }
 
 function removePoll(index) {
