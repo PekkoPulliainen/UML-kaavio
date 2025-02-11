@@ -29,31 +29,29 @@ button {
 }
 
 .userName {
-  position: relative;
-  font-size: 110%;
-  left: 68%;
+  position: absolute;
+  font-size: 105%;
+  left: 78.2%;
   display: none;
 }
 
 .logOut {
-  position: relative;
-  margin-top: 10px;
-  padding-top: 15px;
-  padding-bottom: 0%;
-  left: 61%;
-  font-size: 100%;
+  position: absolute;
+  bottom: 70%;
+  left: 76%;
+  font-size: 105%;
   width: 10%;
   height: 50%;
   border: none;
   background-color: transparent;
-  color: rgb(93, 113, 167);
+  color: rgb(42, 152, 216);
   text-decoration-line: underline;
   display: none;
 }
 
 .logIn {
   position: relative;
-  left: 61%;
+  left: 80%;
   border-radius: 8px;
   background-color: transparent;
   color: rgb(255, 255, 255);
@@ -72,7 +70,7 @@ footer {
 
 body {
   background-color: rgb(22, 25, 27);
-  font-family: Arial, sans-serif;
+  font-family: "Noto Sans", serif;
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -175,21 +173,21 @@ input[type="radio"]:focus {
 }
 
 .progress {
-  height: 50px; /* Keep height */
-  background-color: #6c757d; /* Gray background */
-  display: flex; /* Align content vertically */
-  overflow: hidden; /* Prevent extra spacing */
+  height: 50px;
+  background-color: rgb(52, 53, 54);
+  display: flex;
+  overflow: hidden;
 }
 .progress-bar {
   display: flex;
-  align-items: center; /* Align text inside the bars */
-  justify-content: center; /* Center the text horizontally */
+  align-items: center;
+  justify-content: center;
   padding-top: 6px;
-  padding-bottom: 7px; /* Remove extra padding */
-  line-height: 1; /* Prevent extra height from line spacing */
+  padding-bottom: 7px;
+  line-height: 1;
 }
 
 .bg-success {
-  background-color: #28a745 !important;
+  background-color: #259c41 !important;
   color: white;
 }
